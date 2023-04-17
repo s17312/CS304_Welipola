@@ -19,7 +19,7 @@ public class Supplier {
     private String phone_number;
     private String password_f_time;
     private String password_s_time;
-
+    private String address;
 
     @OneToOne(mappedBy = "supplier")
     private LoginDetails loginDetails;

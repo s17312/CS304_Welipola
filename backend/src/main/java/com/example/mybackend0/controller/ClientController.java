@@ -1,6 +1,7 @@
 package com.example.mybackend0.controller;
 
 import com.example.mybackend0.dto.ClientDTO;
+import com.example.mybackend0.dto.LoginRequest;
 import com.example.mybackend0.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -37,5 +38,15 @@ public class ClientController {
     @GetMapping("/getClientByNameAndPassword/{firstName}/{passwordftime}")
     public ClientDTO getClientByNameAndPassword(@PathVariable String firstname, @PathVariable String passwordftime){
         return clientService.getClientByNameAndPassword(firstname, passwordftime);
+    }
+
+    @GetMapping("/getclientbyclientid/{clientId}")
+    public ClientDTO getClientByClientId(@PathVariable int clientId){
+        return clientService.getClientByClientId(clientId);
+    }
+
+    @PostMapping("/client/login")
+    public ClientDTO clientLogin(@RequestBody LoginRequest data){
+        return clientService.clientLogin(data);
     }
 }

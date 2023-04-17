@@ -17,7 +17,7 @@ import java.io.IOException;
 
 @RestController
 @RequestMapping(value = "/api/v6/upload")
-@CrossOrigin
+@CrossOrigin("http://localhost:3000")
 public class FileController {
 
     @Autowired
@@ -57,18 +57,50 @@ public class FileController {
                 .body( resource);
     }
 
-    //profile pics
-    @PostMapping("/uploadprofilepic/{userId}")
-    public ResponseEntity<FileResponse> ProfilePicture(@RequestParam("file") MultipartFile file,@PathVariable int userId){
-        String imgName=Integer.toString(userId)+".jpg";
+    //material pics
+    @PostMapping("/uploadmaterialpic/{material_id}")
+    public ResponseEntity<FileResponse> MaterialPicture(@RequestParam("file") MultipartFile file,@PathVariable int material_id){
+        String imgName=Integer.toString(material_id)+".jpg";
         String uploadDir="materialPic";
         return uploadFile(file,imgName,"materialPic",uploadDir);
     }
 
-    @GetMapping("/materialPic/{userId}")
-    public ResponseEntity<Resource> downloadFile(@PathVariable int userId, HttpServletRequest request){
-        String fileName=Integer.toString(userId)+".jpg";
+    @GetMapping("/materialPic/{material_id}")
+    public ResponseEntity<Resource> downloadFile(@PathVariable int material_id, HttpServletRequest request){
+        String fileName=Integer.toString(material_id)+".jpg";
         String fileDir="materialPic";
         return LoadFile(fileName,fileDir,request);
     }
+
+    //profile pics
+    @PostMapping("/uploadprofilepic/{userId}")
+    public ResponseEntity<FileResponse> ProfilePicture(@RequestParam("file") MultipartFile file,@PathVariable int userId){
+        String imgName=Integer.toString(userId)+".jpg";
+        String uploadDir="profilePic";
+        return uploadFile(file,imgName,"profilePic",uploadDir);
+    }
+
+    @GetMapping("/propic/{userId}")
+    public ResponseEntity<Resource> downloadProPic(@PathVariable int userId, HttpServletRequest request){
+        String fileName=Integer.toString(userId)+".jpg";
+        String fileDir="profilePic";
+        return LoadFile(fileName,fileDir,request);
+    }
+
+    //branch
+    @PostMapping("/uploadbranchpic/{branch_id}")
+    public ResponseEntity<FileResponse> BranchPicture(@RequestParam("file") MultipartFile file,@PathVariable int branch_id){
+        String imgName=Integer.toString(branch_id)+".jpg";
+        String uploadDir="branchPic";
+        return uploadFile(file,imgName,"branchPic",uploadDir);
+    }
+
+    @GetMapping("/branchpic/{branch_id}")
+    public ResponseEntity<Resource> downloadBranchPic(@PathVariable int branch_id, HttpServletRequest request){
+        String fileName=Integer.toString(branch_id)+".jpg";
+        String fileDir="branchPic";
+        return LoadFile(fileName,fileDir,request);
+    }
+
+
 }

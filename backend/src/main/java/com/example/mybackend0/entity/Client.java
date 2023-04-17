@@ -18,6 +18,8 @@ public class Client {
     private String email;
     private String password_f_time;
     private String password_s_time;
+    private String address;
+    private String phone_number;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "branch_id",referencedColumnName = "branch_id")

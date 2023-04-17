@@ -16,6 +16,8 @@ public class ClientDTO {
     private String email;
     private String password_f_time;
     private String password_s_time;
+    private String address;
+    private String phone_number;
 
 
 }

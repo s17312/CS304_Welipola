@@ -12,20 +12,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Order {
+public class Orders {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int orderId;
     private String quantity;
-//    private String price_per_quantity;
-//    private String total;
-//    private String material_name;
-//    private String name;
-//    private String phone;
-//    private String address;
-//    private String city;
-//    private String closet_city;
-//    private String province;
-//    private String postal_code;
+    private String price_per_quantity;
+    private String total;
+    private String material_name;
+    private String name;
+    private String phone;
+    private String address;
+    private String city;
+    private String closet_city;
+    private String province;
+    private String postal_code;
 }

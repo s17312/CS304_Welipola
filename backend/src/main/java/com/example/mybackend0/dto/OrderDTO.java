@@ -7,9 +7,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class OderDTO {
-
+public class OrderDTO {
     private int oder_id;
+    private String quantity;
+    private String price_per_quantity;
+    private String total;
+    private String material_name;
     private String name;
     private String phone;
     private String address;

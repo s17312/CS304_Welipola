@@ -1,6 +1,7 @@
 package com.example.mybackend0.service;
 
 import com.example.mybackend0.dto.ClientDTO;
+import com.example.mybackend0.dto.LoginRequest;
 import com.example.mybackend0.entity.Client;
 import com.example.mybackend0.repo.ClientRepo;
 //import jakarta.transaction.Transactional;
@@ -42,6 +43,19 @@ public class ClientService {
 
     public ClientDTO getClientByNameAndPassword(String firstname, String passwordftime) {
         Client client = clientRepo.getClientByNameAndPassword(firstname, passwordftime);
+        return modelMapper.map(client, ClientDTO.class);
+    }
+
+    public ClientDTO getClientByClientId(Integer client_id) {
+        Client client = clientRepo.getReferenceById(client_id);
+        return modelMapper.map(client, ClientDTO.class);
+    }
+
+    public ClientDTO clientLogin(LoginRequest data) {
+        Client client = clientRepo.clientLogin(data.getEmail(), data.getPassword());
+        if(client == null){
+            return null;
+        }
         return modelMapper.map(client, ClientDTO.class);
     }
 }
